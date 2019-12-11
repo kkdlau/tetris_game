@@ -17,5 +17,5 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Todo
 
-- add keybaord support for web.
+- add keyboard support for web.
 - add setting saving function
