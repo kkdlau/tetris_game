@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:html';
 import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
@@ -42,6 +43,8 @@ class _TetrisState extends State<Tetris> {
     //game loop
     gameLoopTimer =
         Timer.periodic(Duration(milliseconds: widget.gameSpeed), gameLoop);
+    //keyboard support
+    document.addEventListener('keypress', keybaordHandling);
   }
 
   void gameLoop(Timer timer) {
@@ -52,6 +55,7 @@ class _TetrisState extends State<Tetris> {
         //no free spaces, game over
         activeBlock = null;
         gameLoopTimer.cancel();
+        document.removeEventListener('keypress', keybaordHandling);
         Navigator.pushReplacement(
             context,
             ScaleRoute(
@@ -71,6 +75,15 @@ class _TetrisState extends State<Tetris> {
       }
     }
     setState(() {});
+  }
+
+  void keybaordHandling(dynamic event) {
+    if (activeBlock != null) {
+      if (event.key == 's' || event.key == 'S') drop();
+      if (event.key == 'w' || event.key == 'W') rotate();
+      if (event.key == 'a' || event.key == 'A') moveLeft();
+      if (event.key == 'd' || event.key == 'D') moveRight();
+    }
   }
 
   bool isValidBlock(String blockName, int row, int col, int orientation) {
