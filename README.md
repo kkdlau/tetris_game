@@ -2,6 +2,10 @@
 
 A tetris game built with Flutter.
 
+Now keyboard control is supported.
+
+A = move left, D = move right, W = rotate, S = drop
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
@@ -16,6 +20,4 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 ## Todo
-
-- add keybaord support for web.
 - add setting saving function
