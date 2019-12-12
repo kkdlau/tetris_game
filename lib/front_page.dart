@@ -21,6 +21,38 @@ class _FrontPageState extends State<FrontPage> {
         elevation: 0,
         actions: <Widget>[
           IconButton(
+            icon: Icon(Icons.help),
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  child: AlertDialog(
+                    actions: <Widget>[
+                      MaterialButton(
+                        color: Colors.blue,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text('Dismiss'),
+                      )
+                    ],
+                    title: Text("How to Control?",
+                        style: Theme.of(context).textTheme.headline),
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                            "Generally, you can use bottom /right control panel to control the block. \nHowever, for PC users, you can also use WASD to control."),
+                        Text("\nWASD control:\n",
+                            style: Theme.of(context).textTheme.headline),
+                        Text(
+                            "A = move left, D = move right, W = rotate, S = drop"),
+                      ],
+                    ),
+                  ));
+            },
+          ),
+          IconButton(
               icon: Icon(Icons.settings),
               onPressed: () {
                 Navigator.of(context)
